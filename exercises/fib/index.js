@@ -19,8 +19,6 @@ function memoize(fn) {
   };
 }
 
-const fib = memoize(slowFib);
-
 function slowFib(n) {
   // iterative
   //   let fib = [0, 1];
@@ -33,5 +31,7 @@ function slowFib(n) {
   if (n <= 1) return n;
   if (n > 1) return fib(n - 2) + fib(n - 1);
 }
+
+const fib = memoize(slowFib);
 
 module.exports = fib;
