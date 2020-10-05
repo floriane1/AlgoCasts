@@ -11,6 +11,25 @@
 // 4       5
 // Answer: [1, 3, 2]
 
-function levelWidth(root) {}
+function levelWidth(root) {
+    const array = [root, "s"]; // "s" for stop
+    const counters = [0];
+    // let counter = 0;
+
+    while (array.length > 1) { // at the end there will be only the stop word in the array
+        const node = array[0];
+        array.shift();
+        if (node === "s") {
+            counters.push(0);
+            // counter = 0;
+            array.push("s");
+        } else {
+            array.push(...node.children);
+            counters[counters.length - 1]++;
+        }
+    }
+    // counters.push(counter); // the last counter
+    return counters;
+}
 
 module.exports = levelWidth;
